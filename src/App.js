@@ -5,8 +5,11 @@ import React, { Component } from "react";
 
 class App extends Component{
     render(){
-        return(
-            <div>jsx写法</div>
+        return( 
+            <ul className='mylist'>
+                <li>{false ? "fuck" : "false"}i</li>
+                <li>hate</li>
+            </ul>
         )
     }
 }
