@@ -16,3 +16,7 @@ jsx语法规则：
 
 jsx中只能够使用{}引入一个JS语句，而不是引入代码部分
 ReactDOM.render()之后，React会解析标签，发现组件是函数定义的，随后会调用该函数，组件首字母必须大写
+
+类式组件必须继承React.Component，而且必须实现render方法,而且render必须有返回值
+类式组件使用标签之后，React解析器会自动new一个该类的实例并通过该实例调用到原型的render方法
+props, refs, state三大重要属性
