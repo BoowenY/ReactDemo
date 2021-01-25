@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      const data = "react d";
+      const cla = "sd";
+      const VDOM = (
+        <div>
+          <h2 id="f" style={{ color: "red", fontSize: "20px" }}>
+            <span className="clas" id="data">
+              Hello React
+            </span>
+          </h2>
+          <input type="text" />
+        </div>
+      );
+
+      ReactDOM.render(VDOM, document.getElementById("test"));
+      /*
+      jsx语法规则：
+1.定义虚拟DOM不要写引号
+2.标签中混入JS要使用{}
+3.样式的类名需要用className
+4.内联样式要使用style={{key: value}}
+5.虚拟DOM必须只有一个根标签
+6.标签必须闭合
+7.标签首字母为小写元素，转化为HTML元素
+8.无小写字母元素，会报错
+9.自定义标签必须大写字母开头
+      */
+    </script>
+  </body>
+</html>
