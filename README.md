@@ -1,2 +1,5 @@
 jsx方便创建虚拟DOM，需要经过babel转译
 jsx可以理解为原始创建虚拟DOM的语法糖
+虚拟DOM本质是Object类型的对象
+虚拟DOM是React内部在用，无需真实DOM那么多属性
+虚拟DOM会被转化为真实DOM呈现在页面上
