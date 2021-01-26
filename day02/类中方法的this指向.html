@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+            speak(){
+                console.log(this);
+                //speak方法在原型对象上，供实例使用
+                //通过Person调用speak，speak的this就是实例对象
+            }
+        }
+        const p1 = new Person('tom', 18);
+        p1.speak()//通过实例对象调用speak方法
+        const x = p1.speak
+        x();//直接调用
+        //类中所有定义的方法都开启了严格模式，所有外部调用的时候是没有this 的
+        function demo () {
+            'use strict'
+            console.log(this);
+        }
+        demo()
+    </script>
+</body>
+</html>
