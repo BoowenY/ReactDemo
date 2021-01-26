@@ -20,3 +20,19 @@ ReactDOM.render()之后，React会解析标签，发现组件是函数定义的�
 类式组件必须继承React.Component，而且必须实现render方法,而且render必须有返回值
 类式组件使用标签之后，React解析器会自动new一个该类的实例并通过该实例调用到原型的render方法
 props, refs, state三大重要属性
+类式组件拥有状态，属于复杂组件
+函数式组件是简单组件，没有state
+
+组件实例对象三大属性，state，props，refs
+函数式组件是没有this的，所以也没有实例
+React onClick事件，添加的函数应该在{}内，但是不能加()，所以不能直接用函数调用，React会自动生成实例
+类式组件只有通过实例对象调用this才是this，否则是undefined
+React自动new实例然后调用render方法,自定义方法不能使用this指向，只会返回undefined
+类中写了赋值语句，就会在类中追加一个属性
+
+State总结：
+1.组件被称为状态机，更新状态需要使用setState
+2.组件中render方法的this为实例对象
+3.强制绑定this需要通过函数对象的this
+3.也可以使用箭头函数，使用赋值语句
+4.状态数据不能直接修改或更新，只能用setState
