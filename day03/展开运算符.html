@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let arr1 = [1, 2, 3, 4, 5]
+        let arr2 = [90, 2, 3, 6, 3]
+        console.log(...arr1);//展开一个数组
+        let arr3 = [...arr1, ...arr2]
+        console.log(...arr3);//连接数组
+        //函数中使用
+        function sum (...nums) {
+            return nums.reduce((preValue, currentValue) => {
+                return preValue + currentValue;
+            })
+        }//求数组的和
+        console.log(sum(1, 2, 3, 4));
+
+        let person = {name: 'bob', age: '18'}
+        let p2 = {...person}//复制一个对象，字面量形式
+    //    console.log(...person); //展开运算符不能展开一个对象
+        console.log(p2);
+        person.name = 'Jerry'
+        console.log(person);
+        console.log(p2);
+    </script>
+</body>
+</html>
