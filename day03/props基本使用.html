@@ -7,6 +7,7 @@
   </head>
   <body>
     <div id="test"></div>
+    <div id="test1"></div>
     <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
     <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
     <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
@@ -24,7 +25,9 @@
               )
           }
       }
+      const p = {name:'bob', age:'90', gender:'open'}
       ReactDOM.render(<Person name="tom" gender='male' age='18'/>, document.getElementById('test'))
+      ReactDOM.render(<Person {...p}/>, document.getElementById('test1'))
     </script>
   </body>
 </html>
