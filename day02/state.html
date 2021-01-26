@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class Weather extends React.Component {
+        //构造器执行一次，只new了一个实例对象
+        //render调用1+n次，每一次修改状态都会调用一次render
+        constructor(props) {
+          super(props);
+          this.state = {
+            isHot: false,
+          };
+          this.changeWeather = this.changeWeather.bind(this);
+          //第一个this表示实例自身，changeWeather是通过原型链找到的
+          //bind方法返回一个函数，也可以命名为其他方法然后进行调用
+          //this.demo = this.changeWeather.bind(this) onClick={this.demo}
+        }
+        changeWeather() {
+          const isHot = this.state.isHot;
+          //状态不可以直接更改，要借助内置API setState
+          // this.state.isHot = !isHot; 错误写法
+          this.setState({ isHot: !isHot });
+          //更新的动作是一种合并，而不是替换掉
+        } //由于changeWeather作为onClick的回调，所以不是通过实例调用的，是直接调用
+        //类中的方法默认开始局部严格模式，所以changeWeather的this是undefined
+        render() {
+          console.log("render");
+          return (
+            <h1 onClick={this.changeWeather}>
+              天气很{this.state.isHot ? "炎热" : "寒冷"}
+            </h1>
+          );
+        }
+      }
+      ReactDOM.render(<Weather />, document.getElementById("test"));
+      //   const title = document.getElementById('title')
+      //   title.onclick = function () {
+      //       alert('ttttee')
+      //   }
+    </script>
+  </body>
+</html>
