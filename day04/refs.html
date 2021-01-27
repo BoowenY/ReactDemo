@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class Demo extends React.Component {
+          click = () => {
+              const {btn1} = this.refs
+              alert(btn1.value)
+          }//收集到的是虚拟DOM转成真实DOM后的节点
+          showData = () => {
+              const {btn2} = this.refs
+              alert(btn2.value)
+          }
+        render() {
+          return (
+            <div>
+              <input ref = "btn1" type = "text" placeholder="点击提示数据"/>&nbsp;
+              <button onClick={this.click }>点击提示</button>&nbsp;
+              <input ref="btn2" onBlur={this.showData} type = "text" placeholder="点击提示数据"/>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Demo/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
