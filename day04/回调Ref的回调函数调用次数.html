@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class Demo extends React.Component {
+        state = {isHot: true}
+          click = () => {
+              const {input1} = this
+              alert(input1.value)
+          }//收集到的是虚拟DOM转成真实DOM后的节点
+          changeWeather = () => {
+            const {isHot} = this.state;
+            this.setState({isHot: !isHot})
+          }
+          saveInput = (c) => {
+            this.input1 = c;
+            console.log("@", c);
+          }
+        render() {
+          const {isHot} = this.state;
+          return (
+            <div>
+              <h2>今天天气很{isHot ? '炎热' : '凉爽'}</h2>
+              {/*<input ref = {c => {this.input1 = c; console.log("@", c)}} type = "text" placeholder="点击提示数据"/>&nbsp;
+            回调函数类型在每次更新的时候都会渲染两次，一次为null，另一次为实例，因为react在每次重新渲染的时候都会重新生成一个类实例
+            */}
+              <input ref = {this.saveInput} type = "text" placeholder="点击提示数据"/>
+              <button onClick={this.click }>点击提示输入的数据</button>
+              <button onClick={this.changeWeather}>点击切换天气</button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Demo/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
