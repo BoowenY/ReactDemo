@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class Demo extends React.Component {
+        myRef = React.createRef();
+        myRef2 = React.createRef();
+          click = () => {
+            //该函数传入参数event，指的是button按钮，而不是input元素
+              alert(this.myRef.current.value);
+          }
+          showData = (event) => {
+            alert(event.target.value)
+          }
+        render() {
+          return (
+            <div>
+              <input ref = {this.myRef} type = "text" placeholder="点击提示数据"/>&nbsp;
+              <button onClick={this.click }>点击提示</button>&nbsp;
+              <input onBlur = {this.showData} type = "text" placeholder="点击提示数据"/>&nbsp;
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Demo/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
