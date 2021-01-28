@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class Login extends React.Component {
+          hanldeSubmit = (event) => {
+              event.preventDefault();//组织表单提交
+            const {input1, input2} = this;
+            alert(`您输入的用户名为${input1.value}，您输入的密码是${input2.value}`);
+          }
+          render() {
+              return (
+                  <form onSubmit = {this.hanldeSubmit}>
+                    用户名:<input ref={c => this.input1 = c} type="text" name="username"/>
+                    密码:<input ref= {c => this.input2 = c} type="text" name="password"/>
+                    <button>登录</button>
+                    </form>
+              )
+          }
+      }
+      ReactDOM.render(<Login/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
