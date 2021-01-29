@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class Add extends React.Component {
+          
+          constructor (props) {
+              console.log('Count---constructor');
+            super();
+            this.state = {count: 0}
+
+          }//将要挂载
+          componentWillMount () {
+              console.log('Count---willMount');
+          }
+          componentDidMount () {
+              console.log('Count---DidMount');
+          }
+          componentWillUnmount () {
+              console.log('Count---willUnmount');
+          }
+          componentWillUpdate () {
+              console.log('Count---willUpdate');
+          }
+          componentDidUpdate () {
+              console.log('Count---DidUpdate');
+          }
+          shouldComponentUpdate () {
+              console.log('Count---shouldUpdate');
+              return true;
+          }
+          add = () => {
+              const {count} = this.state;
+              this.setState({count: count + 1})
+          }
+          dead = () => {
+              ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+          }
+          force = () => {
+              this.forceUpdate();
+          }
+          render () {
+              console.log('Count---render');
+              const {count} = this.state;
+              return (
+                  <div>
+                    <h2>当前求和为：{count}</h2>
+                    <button onClick={this.add}>点我加一</button>
+                    <button onClick={this.dead}>卸载组建</button>
+                    <button onClick={this.force}>不更改数据，强制更新一下</button>
+                    </div>
+              )
+          }
+      }
+      class A extends React.Component {
+          state = {car: '奔驰'}
+          changeCar = () => {
+              this.setState({car: '宝马'})
+          }
+          render () {
+              return (
+                  <div>
+                  <div>我是A组件</div>
+                  <button onClick={this.changeCar}>换车</button>
+                  <B car={this.state.car}/>
+                  </div>
+
+              )
+          }
+      }
+      class B extends React.Component {
+          componentWillReceiveProps (props) {
+              console.log('BBBBBBB', props);
+          }
+          shouldComponentUpdate() {
+              console.log('should');
+              return true;
+          }
+          componentWillUpdate () {
+              console.log('will');
+          }
+          componentDidUpdate () {
+              console.log('did');
+          }
+          render() {
+              console.log('render');
+              return (
+                  <div>B组件接收到的信息是：{this.props.car}</div>
+              )
+          }
+      }
+      ReactDOM.render(<A/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
