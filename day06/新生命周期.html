@@ -23,20 +23,24 @@
           super();
           this.state = { count: 0 };
         } //将要挂载
-        UNSAFE_componentWillMount() {
-          console.log("Count---willMount");
+        static getDerivedStateFromProps (props, state) {
+          console.log('DerivedStateFromProps',props, state);
+          return null;
         }
+        
+        getSnapshotBeforeUpdate () {
+          console.log('snapshot');
+          return 'Boowen'
+        }//此生命周期的任何返回值都将作为参数返回给DidUpdate
+
         componentDidMount() {
           console.log("Count---DidMount");
         }
         componentWillUnmount() {
           console.log("Count---willUnmount");
         }
-        UNSAFE_componentWillUpdate() {
-          console.log("Count---willUpdate");
-        }
-        componentDidUpdate() {
-          console.log("Count---DidUpdate");
+        componentDidUpdate(preProps, preState, snapshotValue) {
+          console.log("Count---DidUpdate", preProps, preState, snapshotValue);
         }
         shouldComponentUpdate() {
           console.log("Count---shouldUpdate");
@@ -65,41 +69,8 @@
           );
         }
       }
-      class A extends React.Component {
-        state = { car: "奔驰" };
-        changeCar = () => {
-          this.setState({ car: "宝马" });
-        };
-        render() {
-          return (
-            <div>
-              <div>我是A组件</div>
-              <button onClick={this.changeCar}>换车</button>
-              <B car={this.state.car} />
-            </div>
-          );
-        }
-      }
-      class B extends React.Component {
-        UNSAFE_componentWillReceiveProps(props) {
-          console.log("BBBBBBB", props);
-        }
-        shouldComponentUpdate() {
-          console.log("should");
-          return true;
-        }
-        UNSAFE_componentWillUpdate() {
-          console.log("will");
-        }
-        componentDidUpdate() {
-          console.log("did");
-        }
-        render() {
-          console.log("render");
-          return <div>B组件接收到的信息是：{this.props.car}</div>;
-        }
-      }
-      ReactDOM.render(<A />, document.getElementById("test"));
+
+      ReactDOM.render(<Add count="199"/>, document.getElementById("test"));
     </script>
   </body>
 </html>
