@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class Time extends React.Component {
+        state = { date: new Date() };
+        componentDidMount() {
+          setInterval(() => {
+            this.setState({ date: new Date() });
+          }, 1000);
+        }
+        render() {
+          return (
+            <div>
+              <h1>hello</h1>
+              <input type="text" />
+              <span>现在是：{this.state.date.toString()}</span>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Time />, document.getElementById("test"));
+      class Person extends React.Component {
+        state = {
+          person: [
+            { id: "1", name: "小张", age: "19" },
+            { id: "2", name: "小2", age: "29" },
+          ],
+        };
+        add = () => {
+          const { person } = this.state;
+          const p = { id: person.length + 1, name: "小狗", age: "20" };
+          this.setState({ person: [p, ...person] });
+          //
+        };
+        render() {
+          return (
+            <div>
+              <h2>展示人员信息</h2>
+              <button onClick={this.add}>添加一个小王八</button>
+              <ul>
+                {this.state.person.map((personObj, index) => {
+                  return (
+                    <li key={index}>
+                      {" "}
+                      {personObj.name}-----{personObj.name}
+                    </li>
+                  );
+                })}
+              </ul>
+              <hr />
+              <hr />
+              <ul>
+                {this.state.person.map((personObj, index) => {
+                  return (
+                    <li key={personObj.id}>
+                      {" "}
+                      {personObj.name}-----{personObj.name}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Person />, document.getElementById("test2"));
+    </script>
+  </body>
+</html>
