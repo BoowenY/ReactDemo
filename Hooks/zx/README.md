@@ -1,2 +1,4 @@
 State Hook
 使用useState完成一个计数器,添加内部属性
+useEffect发生在渲染之后，接收一个回调函数
+如果useEffect返回一个函数，那么React会在组件卸载的时候执行这个函数

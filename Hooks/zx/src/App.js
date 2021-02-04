@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import LikeButton from './components/LikeButton';
+import MouseTracker from './components/MouseTracker';
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <LikeButton/>
+        <MouseTracker/>
         <a
           className="App-link"
           href="https://reactjs.org"
