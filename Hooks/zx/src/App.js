@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import LikeButton from './components/LikeButton';
 import MouseTracker from './components/MouseTracker';
+import DogShow from './components/DogShow';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <LikeButton/>
         <MouseTracker/>
+        <DogShow/>
         <a
           className="App-link"
           href="https://reactjs.org"
