@@ -81,3 +81,34 @@ shouldComponentUpdate是一个阀门，其实在调用setState之后，调用sho
 2.willUnmount做一些善后工作，关闭定时器
 3.render
 
+所有带will的组件在新版本都需要加UNSAFE_
+除了WillUNMount
+
+getDerivedStateFromProps使得state的值取决于props
+
+
+
+React中的key有什么作用？
+为什么遍历列表时key最好不要用index
+(1)key是虚拟DOM对象中的标识，更新显示时key非常重要
+2).详细的说:当状态中的数据发生变化时，react会根据 [新数据]生成[新的虚拟DOM] ,随后React进行[新虚拟DOM]与[旧虚拟DOM]的diff比较
+比较规则如下:
+a.旧虚拟DOM中找到了与新虚拟DOM相同的key:
+    (1).若虚拟DOM中内容没变，直接使用之前的真实DOM
+    (2).若虚拟DOM中内容变了，则生成新的真实DOM，随后替换掉页面中之前的真实DOM
+b.旧虚拟DOM中未找到与新虚拟DOM相同的key
+    根据数据创建新的真实DOM，随后渲染到到页面
+
+2.用index作为key可 能会引发的问题:
+    1.若对数据进行:逆序添加、逆序删除等破坏顺序操作:会产生没 有必要的真实DOM更新==>界面效果没问题，但效率低。
+    2.如果结构中还包含输入类的DOM:会产生错误DOM更新==> 界面有问题。
+    注意!如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作 为key是没有问题的。
+3.开发中如何选择key?:
+最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号.与興品2.如果确定只是简单的展示数据，用index 也是可以的。
+index.html只有一个节点div，id为root，ReactDOM只负责把App渲染到该页面
+index.js是入口文件，引入核心库和样式 
+{Component}的引入方式不是解构赋值，而是单独暴露了一个Component类，通过React.Component = Component方式添加到React
+可以使用index.module.css方式，引入的时候使用import hello from './xxx'，使用{hello.title}使样式模块化
+父子组件传值的时候对对象数组选用{...todo}的形式
+子组件给父组件传递数据，可以使用父组件给子组件传递一个函数
+yarn add prop-types进行类型限制
