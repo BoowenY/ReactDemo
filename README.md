@@ -103,3 +103,21 @@ React不能够存错误对象，而是错误对象的。message属性
 消息订阅与发布机制
 npm install pubsub-js --save 
 PubSubJS
+
+路由的工作原理，点击导航区的链接但是不会引起跳转
+一个路由就是一个映射关系，路由的key导航到value，value可能是function或者component
+前端路由依赖于History,BOM包含History
+window.History
+
+npm install --save react-router-dom
+BrowserRouter
+HashRouter
+Route
+Redirect
+Link
+NavLink
+Switch
+
+使用a标签跳转页面，路由链接切换组件
+整个路径由一个路由器管理，只能用一个Router标签包裹
+在入口文件index.js包裹整个App即可在整个组件直接使用路由功能
