@@ -145,3 +145,51 @@ redirect放在路由最下方，不配置路径和组件，只有to=""，如果�
 
 由于模糊匹配，所以二级路由可以使用上一级路由路径后面加上自己的注册路由路径
  使用params进行路由参数传值必须进行声明，一方面传值，一方面接收
+
+ antd引入的时候需要样式，antd.css
+
+
+ Redux练习
+ dispatch, getState, subscribe
+ 在indexjs使用subscribe，每当react调用App重新渲染，都可以触发redux订阅
+ 同步action值为对象，异步返回值应该是一个函数
+ 无论是数组还是数值都不能开启一个异步的任务，而函数可以
+ yarn add redux-thunk
+ 在函数中写异步任务，由store执行，可以接受一个dispatch参数
+ react-redux基本使用
+ UI组件与容器组件，一个负责交互，一个将结果交给UI组件
+ connect(mapStateToProps, mapDispatchToProps)
+ 一个是映射状态，返回值是一个对象
+ 一个映射操作状态的方法，返回值也是对象
+ 容器组件store是props传进去的，而不是在容器组件中直接引入
+ mapDispatchToProps简写方式
+   {
+    jia: createIncrementAction,
+    jian: createDecrementAction,
+    jiaAsync: createAsyncAction,
+  }
+  只传入一个对象，而不是使用function
+使用react-redux可以自己检测页面渲染，使用Provider托管所有需要的store
+
+容器组件和UI组件整合成一个组件
+无需自己给容器组件传store，使用Provider即可
+使用react-redux自动监测redux变化
+组件与redux交互步骤：
+    1.定义UI组件
+    2.引入connect连接UI与容器
+    3.mapDispatchToProps与mapStateToProps
+    4.UI通过this.props.xxx读取操作状态
+preState.unshift(data) 与展开运算符相比，[data, ...preState]，redux底层判断，如果值是一样的，那么就不会进行页面更新数
+使用纯函数，不得修改参数，浅拷贝中push一个变量是不会改变地址的
+使用Provider包裹app，app所有后代容器都能接受到store
+App中引入的是count的容器组件
+npm run build打包生成静态文件
+
+
+
+setState:
+  异步更新，setState有一个可选参数为异步函数，setState是一个同步方法，但是引起React的后续动作是异步的
+  状态更新完毕，而且渲染完毕，React第二个参数的函数才会被调用
+对象式的setState是类式setState的简写方式,如果新状态依赖于原状态，最好使用函数式
+
+
