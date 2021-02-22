@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+    class App extends React.Component {
+      state = {
+        movies: [
+          '1',
+          '2',
+          '3',
+          '4',
+          '5'
+        ]
+      }
+      render() {
+        return (
+          <div>
+          <h2>电影列表</h2>
+          <ul>
+            {//map有三个参数，第一个是对应元素，第二个是下标索引，第三个是完整的数组对象
+              this.state.movies.map((file, index) => {
+              return <li key={index}>{file}</li>
+            })}
+          </ul>
+            </div>
+        )
+      }
+    }
+      ReactDOM.render(<App/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
