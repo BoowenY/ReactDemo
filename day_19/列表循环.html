@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+    class App extends React.Component {
+        state = {
+            numbers: [
+                '12',
+                '2323',
+                '809',
+                '23424'
+            ],
+            name: [
+                1, 2, 45,576,1,90,123,11134,99
+            ]
+        }
+        render() {
+            return (
+                <div>
+<ul>
+    
+    {
+        this.state.numbers.map((item, index) => {
+            return <li key={index}>{item}</li>
+        })
+    }
+    </ul>
+    <ul>
+        {
+            this.state.name.filter( (item, index) => {
+                return item > 50
+            }).map((item, index) => <li key = {index}>{item}</li>)
+        }
+        </ul>
+ </div>
+            )
+        }
+    }
+      ReactDOM.render(<App/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
