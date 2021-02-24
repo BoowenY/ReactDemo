@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+          constructor(props){
+              super(props)
+              this.btn = this.btn.bind(this)
+          }
+          state = {
+              movies: ['asd','we','rtrt','werf']
+          }
+          btn (event) {
+              console.log('btn',event);//React回调的时候会自己传入一个对象
+          }
+          lClick (a, b,c) {
+              console.log(a, "-----", b, '-----',c);
+          }
+        render() {
+          return <div>
+            <button onClick={this.btn}>btn</button>
+            <ul>
+                {
+                    this.state.movies.map((item, index) => {
+                        return <li onClick={e => {this.lClick(item , index, e)}} key ={index}>{item}</li>
+                    })
+                }
+                </ul>
+            </div>
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
