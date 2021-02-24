@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+        state = {
+          name: "why", //String
+          age: 20,    //Number
+          names: ["asd", "asd", "oiu"], //Array
+          test1: null, //不展示
+          test2: undefined,
+          test3: true,
+          //对象不能作为子类
+          info: {
+            name: 'koe',
+            age: 89
+          }
+        };
+        render() {
+          return (
+            <div>
+              <h2>{this.state.name}</h2>
+              <h2>{this.state.age}</h2>
+              <h2>{this.state.names}</h2>
+              <h2>{this.state.test1}</h2>
+              <h2>{this.state.test2}</h2>
+              <h2>{this.state.test3.toString()}</h2>
+              <h2>{this.state.test3 ? 'hello' : null}</h2>
+              <h2>{this.state.test3 && 'hello'}</h2>
+              <h2>{/*this.state.info jsx不能把一个对象作为子类*/}</h2>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
