@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      class App extends React.Component {
+        state = {
+          isLogin: false,
+        };
+        loginClick  () {
+            console.log('click');
+        }
+        render() {
+          let welcome = "null";
+          let btnText = null;
+          if (this.state.isLogin) {
+            welcome = <h2>welcome</h2>;
+            btnText = "tuichu";
+          } else {
+            welcome = <h2>Login</h2>;
+            btnText = "denglu";
+          }
+          return (
+            <div>
+              {welcome}
+              <button onClick={e => this.loginClick()}>{this.state.isLogin ? 'tuichu' : 'denglu'}</button>
+              <hr/>
+                <h2>{this.state.isLogin && 'hello'}</h2>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("test"));
+    </script>
+  </body>
+</html>
