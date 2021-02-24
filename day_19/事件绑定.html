@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+    class App extends React.Component {
+        // constructor () {
+        //     // this.click_class = this.click_class.bind(this) //解决办法
+        // }
+        state = {
+            hel: 'hello world'
+        }
+        click = () => {
+            console.log(this.state.hel);
+        }
+        click_class () {
+            console.log(this); //这里的this来自于button绑定的this，button是通过render函数绑定的this
+        }
+        decrement(name) {
+            console.log(name);
+        }
+        render() {
+            return (
+                <div>
+                    <button onClick={this.click_class.bind(this)}>woc</button>
+                    <button onClick={() => {this.decrement(1); console.log(this)}}>-1</button>
+ </div>
+            )
+        }
+    }
+      ReactDOM.render(<App/>, document.getElementById('test'))
+    </script>
+  </body>
+</html>
