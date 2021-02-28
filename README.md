@@ -192,4 +192,6 @@ setState:
   状态更新完毕，而且渲染完毕，React第二个参数的函数才会被调用
 对象式的setState是类式setState的简写方式,如果新状态依赖于原状态，最好使用函数式
 
-
+React支持返回一个JSX数组，布尔值或者null是不会渲染的
+componentDidUpdate第一次渲染不会执行，之后重新渲染会执行这个生命周期
+componentWillUnmount会在这个组件卸载的时候执行，负责清除一些状态，可以清除定时器啊
