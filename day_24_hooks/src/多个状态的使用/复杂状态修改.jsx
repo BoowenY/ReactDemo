@@ -11,6 +11,7 @@ export default function Complex() {
     newFriends[index].age + 1;
     setFriends(newFriends);
   }
+
   return (
     <div>
       <h2>当前计数：{count}</h2>
